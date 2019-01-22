@@ -15,6 +15,7 @@ public class Ticket {
         System.out.println("Total Tickets: " + tickets);
         System.out.println("Round-trip: " + roundTrip);
         System.out.println("Total: " + ((tickets-roundTrip) + (roundTrip * 2))*925);
+        System.out.println();
     }
 
 }

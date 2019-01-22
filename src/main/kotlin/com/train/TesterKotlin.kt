@@ -3,16 +3,29 @@ package com.train
 import java.util.*
 
 fun main(args: Array<String>) {
-
     var scan = Scanner(System.`in`)
-    println("Please enter number of tickets: ")
-    var tickets = scan.nextInt()
+    var tickets:Int
+    var roundtrip:Int
 
-    println("How many round-trip tickets: ")
-    var roundtrip = scan.nextInt()
+    do{
+        print("Please enter number of tickets: ")
+        tickets = scan.nextInt()
 
-    var ticket = Tickets(tickets,roundtrip)
-    ticket.print()
+        if(tickets != -1){
+            print("How many round-trip tickets: ")
+            roundtrip = scan.nextInt()
+
+            while(roundtrip>tickets){
+                println("Round-trip ticket are more than the tickets !!")
+                print("How many round-trip tickets: ")
+                roundtrip = scan.nextInt()
+            }
+            var ticket = Tickets(tickets,roundtrip)
+            ticket.print()
+        }else{
+            println("Thank you.")
+        }
+    }while(tickets != -1)
 }
 
 class Tickets(var tickets:Int, var roundtrip:Int){
@@ -21,5 +34,6 @@ class Tickets(var tickets:Int, var roundtrip:Int){
         println("Total Tickets: $tickets")
         println("Round-trip: $roundtrip")
         println("Total: " + ((tickets-roundtrip)+(roundtrip*2))*925)
+        println()
     }
 }

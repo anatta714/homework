@@ -5,14 +5,27 @@ import java.util.Scanner;
 public class Tester {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        int tickets= 0 ;
+        int roundtrip = 0;
 
-        System.out.println("Please enter number of tickets:");
-        int tickets = scan.nextInt();
+        do {
+            System.out.print("Please enter number of tickets:");
+            tickets = scan.nextInt();
 
-        System.out.println("How many round-trip tickets:");
-        int roundtrip = scan.nextInt();
+            if (tickets != -1) {
+                System.out.print("How many round-trip tickets:");
+                roundtrip = scan.nextInt();
 
-        Ticket ticket = new Ticket(tickets,roundtrip);
-        ticket.print();
+                while(roundtrip>tickets){
+                    System.out.println("Round-trip ticket are more than the tickets !!");
+                    System.out.print("How many round-trip tickets: ");
+                    roundtrip = scan.nextInt();
+                }
+                Ticket ticket = new Ticket(tickets, roundtrip);
+                ticket.print();
+            }else{
+                System.out.print("Thank you.");
+            }
+        }while(tickets != -1);
     }
 }
